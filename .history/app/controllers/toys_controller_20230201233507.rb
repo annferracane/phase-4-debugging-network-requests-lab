@@ -14,7 +14,7 @@ class ToysController < ApplicationController
 
   def update
     toy = Toy.find_by(id: params[:id])
-    toy.update!(toy_params)
+    toy.update(toy_params)
     render json: toy, status: :accepted
   end
 
@@ -30,8 +30,8 @@ class ToysController < ApplicationController
     params.permit(:name, :image, :likes)
   end
 
-  def render_record_invalid(invalid)
-    render json: { errors: invalid.record.errors.full_messages }, status: :unprocessable_entity
+  def render_record_invalid
+
   end
 
 end
